@@ -63,6 +63,7 @@ cyclops_field_assistant/
 │   └── transcribe_audio.py
 └── scripts/
     └── download_faster_whisper.sh
+    └── run_live_pipeline.sh
 ```
 
 ## Computer Vision Checkpoint
