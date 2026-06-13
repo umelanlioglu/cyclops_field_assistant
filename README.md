@@ -28,15 +28,27 @@ cyclops_field_assistant/
 ├── checkpoints/
 │   └── yolo26s_cr10smart_seg_final.pt
 ├── rag/
-│   ├── pipeline.py
-│   ├── retrieval.py
-│   ├── gemini_client.py
-│   ├── prompts.py
-│   ├── request_guard.py
+│   ├── __init__.py
+│   ├── data_loading.py
 │   ├── expectations.py
+│   ├── gemini_client.py
+│   ├── labels.py
+│   ├── pipeline.py
+│   ├── prompts.py
+│   ├── references.py
+│   ├── request_guard.py
+│   ├── retrieval.py
+│   ├── routing_fallback.py
+│   ├── session_memory.py
+│   ├── source_scope.py
+│   ├── turn_state.py
+│   ├── vision.py
 │   ├── visual_guidance.py
 │   └── data/
 │       └── cr10smart_manual_chunks_multilingual.json
+├── text2speech/
+│   ├── __init__.py
+│   └── text_to_speech.py
 └── scripts/
     └── download_faster_whisper.sh
 ```
@@ -47,12 +59,6 @@ The final YOLO26 Small instance-segmentation checkpoint is stored at:
 
 ```text
 checkpoints/yolo26s_cr10smart_seg_final.pt
-```
-
-This checkpoint was selected from the final Demo Day training run:
-
-```text
-runs/segment/runs/segment/runs/printer_parts_seg/demoday_scene_overfit_aug3_no_mosaic/weights/best.pt
 ```
 
 It is used for Creality CR-10 Smart printer-component segmentation.
@@ -94,7 +100,7 @@ export GEMINI_API_KEY="your_gemini_api_key_here"
 export GEMINI_MODEL="gemini-3.1-flash-lite"
 ```
 
-Alternatively, users may create a local `.env` file, but `.env` files should not be committed.
+Alternatively, you may create a local `.env` file.
 
 ## RAG Module
 
@@ -112,7 +118,4 @@ The module performs:
 - grounded answer generation with Gemini
 - visual guidance target selection for segmentation-based annotations
 
-## Notes
-
-Large generated outputs, datasets, downloaded speech checkpoints, temporary files, and local secrets are intentionally excluded from the repository.
 EOF
