@@ -45,6 +45,11 @@ cyclops_field_assistant/
 │   ├── visual_guidance.py
 │   └── data/
 │       └── cr10smart_manual_chunks_multilingual.json
+├── segmentation/
+│   ├── __init__.py
+│   ├── detection_stabilizer.py
+│   ├── labels.py
+│   └── yolo_live.py
 ├── live_worker/
 │   ├── README.md
 │   ├── live_ai_worker.py
@@ -124,6 +129,21 @@ The module performs:
 - visual expectation checking using detected printer components
 - grounded answer generation with Gemini
 - visual guidance target selection for segmentation-based annotations
+
+## Segmentation Module
+
+The `segmentation/` folder contains the YOLO-based computer vision module.
+
+Main files:
+
+- `yolo_live.py` — loads the final YOLO26 segmentation checkpoint and runs inference on camera frames
+- `detection_stabilizer.py` — stabilizes detections across live frames
+- `labels.py` — contains printer-component class labels and label normalization utilities
+
+The module uses the final checkpoint:
+
+```text
+checkpoints/yolo26s_cr10smart_seg_final.pt
 
 ## Text-to-Speech Module
 
