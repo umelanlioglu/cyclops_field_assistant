@@ -58,9 +58,9 @@ cyclops_field_assistant/
 │   ├── measure_live_latency.py
 │   ├── simulate_gelen_stream.py
 │   └── archive_conversations.py
-├── text2speech/
+├── speech/
 │   ├── __init__.py
-│   └── text_to_speech.py
+│   └── transcribe_audio.py
 └── scripts/
     └── download_faster_whisper.sh
 ```
@@ -145,17 +145,14 @@ The module uses the final checkpoint:
 ```text
 checkpoints/yolo26s_cr10smart_seg_final.pt
 
-## Text-to-Speech Module
+## Speech Module
 
-The final headset application uses Android's native TextToSpeech engine for spoken feedback. The backend-side `text2speech/` module prepares clean, structured TTS payloads from generated answer text.
+The `speech/` folder contains the Faster-Whisper speech-to-text wrapper used to transcribe technician voice queries.
 
-Example:
+The Faster-Whisper checkpoint is downloaded locally with:
 
 ```bash
-python -m text2speech.text_to_speech "Check the Bowden tube and filament detector." --language en
-```
-
-This returns a JSON payload that can be sent to the Android client for on-device speech synthesis.
+./scripts/download_faster_whisper.sh
 
 ## Live Worker
 
