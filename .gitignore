@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local secrets
+.env
+.env.*
+
+# Generated / large folders
+runs/
+wandb/
+outputs/
+datasets/
+
+# Model artifacts: ignore by default
+*.pt
+*.pth
+*.onnx
+*.engine
+*.safetensors
+
+# Keep final CV checkpoint
+!checkpoints/
+!checkpoints/yolo26s_cr10smart_seg_final.pt
+
+# Do not commit downloaded Faster-Whisper model
+checkpoints/faster-whisper-*/
+checkpoints/faster-whisper-*/
